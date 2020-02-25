@@ -19,9 +19,9 @@ class FanartService {
   String tmdbImageUrl = 'https://image.tmdb.org/t/p/w500';
 
   Future<FanartItem> getImages(TraktModel item) async {
-    
+
       return await getImagesFromTmdb(_getTmdbEndpoint(item), true);
-    
+
   }
 
   String _getTmdbEndpoint(TraktModel item) {
@@ -39,21 +39,21 @@ class FanartService {
   }
 
 
-  Future<String> getImagesFromFanart(String imdbId, String endpoint) async {
-    String posterArray = endpoint == 'movies' ? 'movieposter' : 'tvposter';
-    var res = await http.get('${fanartBaseUrl}/${endpoint}/${imdbId}?api_key=${fanartApiKey}');
-    if (res.statusCode == 200) {
-      Map<String, dynamic> body = jsonDecode(res.body);
-      // for(int i = 0; i < body[posterArray].length; i++) {
-      //   if(body[posterArray][i]['lang'] == 'en') {
-          return  body[posterArray][0]['url'];
-        // }
-      // }
-      
-    } else {
-      return '';
-    }
-  }
+//  Future<String> getImagesFromFanart(String imdbId, String endpoint) async {
+//    String posterArray = endpoint == 'movies' ? 'movieposter' : 'tvposter';
+//    var res = await http.get('${fanartBaseUrl}/${endpoint}/${imdbId}?api_key=${fanartApiKey}');
+//    if (res.statusCode == 200) {
+//      Map<String, dynamic> body = jsonDecode(res.body);
+//      // for(int i = 0; i < body[posterArray].length; i++) {
+//      //   if(body[posterArray][i]['lang'] == 'en') {
+//          return  body[posterArray][0]['url'];
+//        // }
+//      // }
+//
+//    } else {
+//      return '';
+//    }
+//  }
 
 
   Future<FanartItem> getImagesFromTmdb(String endpoint, bool isEpisode) async {
@@ -74,7 +74,7 @@ class FanartService {
     return fa;
   }
 
-  
+
 
 }
 

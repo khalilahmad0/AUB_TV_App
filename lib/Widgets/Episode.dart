@@ -1,5 +1,5 @@
-import 'package:chillyflix/Services/FanartService.dart';
-import 'package:chillyflix/Services/TraktService.dart';
+import 'package:aub/Services/FanartService.dart';
+import 'package:aub/Services/TraktService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

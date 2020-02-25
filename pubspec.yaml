@@ -1,4 +1,4 @@
-name: chillyflix
+name: aub
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -26,6 +26,7 @@ dependencies:
   flutter_cache_manager: ^1.1.3
   flutter_cache_store: ^0.7.1
   intl: ^0.16.0
+  carousel_pro: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

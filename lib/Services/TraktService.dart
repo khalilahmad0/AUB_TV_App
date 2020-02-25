@@ -10,7 +10,7 @@ class TraktService {
   String apiKey = '0382d8815ebf303ee57a69a88b02348afaf40bcb39b7053da6bb2da36ee800a3';
   String secretKey = '078b464ad3d02eefb44c0259dea679b40074dbfef0fd01947c9b59fc546010de';
 
-  Future<List<TraktModel>> getMovies(int limit) async {
+  Future<List<TraktModel>> getData(int limit) async {
     var res = await http.get('${baseUrl}/movies/trending?extended=full&limit=${limit}.toString()', headers: {'trakt-api-version': apiVersion, 'trakt-api-key': apiKey});
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -150,7 +150,7 @@ class TraktModel {
       } else {
         item.year = show.year;
       }
-      
+
       item.overview = json['overview'] as String;
       item.runtime = json['runtime'] as int;
       item.trailer = json['trailer'] as String;
@@ -158,7 +158,7 @@ class TraktModel {
       item.ids = json['ids'] as Map<String, dynamic>;
 
       item.episodes = List<TraktModel>();
-      
+
       for(int i = 0; i < json['episodes'].length; i++) {
         TraktModel episode = TraktModel();
         episode.title = json['episodes'][i]['title'] as String;
@@ -175,12 +175,12 @@ class TraktModel {
           episode.firstAired = '';
         }
         episode.overview = (json['episodes'][i]['overview'] != null ? json['episodes'][i]['overview'] : '') as String;
-        
+
         episode.runtime = json['episodes'][i]['runtime'] as int;
         episode.trailer = json['episodes'][i]['trailer'] as String;
         episode.rating = json['episodes'][i]['rating'] as double;
         episode.ids = json['episodes'][i]['ids'] as Map<String, dynamic>;
-        
+
         item.episodes.add(episode);
 
       }
@@ -188,7 +188,7 @@ class TraktModel {
     }
 
     return item;
-    
+
   }
 
 }

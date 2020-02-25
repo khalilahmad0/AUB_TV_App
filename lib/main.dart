@@ -1,24 +1,14 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import 'package:chillyflix/Services/FanartService.dart';
-import 'package:chillyflix/Pages/HomePage.dart';
-import 'package:chillyflix/Services/TraktService.dart';
-
-extension Precision on double {
-      double toPrecision(int fractionDigits) {
-      double mod = pow(10, fractionDigits.toDouble());
-      return ((this * mod).round().toDouble() / mod);
-    }
-}
-
+import 'package:aub/Services/FanartService.dart';
+import 'package:aub/Pages/HomePage.dart';
+import 'package:aub/Services/TraktService.dart';
 
 void main() {
-  return runApp(MyApp()); 
+  return runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -32,15 +22,18 @@ class MyApp extends StatelessWidget {
       ],
       child: Shortcuts(
         // needed for AndroidTV to be able to select
-        shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent(ActivateAction.key)},
+        shortcuts: {
+          LogicalKeySet(LogicalKeyboardKey.select):
+              const Intent(ActivateAction.key)
+        },
         child: MaterialApp(
-          title: 'ChillyFlix',
+          debugShowCheckedModeBanner: false,
+          title: 'AUB',
           theme: ThemeData(
-            fontFamily: GoogleFonts.openSans().fontFamily,
-            primarySwatch: Colors.blueGrey,
-            backgroundColor: Color.fromARGB(255, 35, 40, 50)
-          ),
-          home: HomePage(title: 'ChillyFlix'),
+              fontFamily: GoogleFonts.openSans().fontFamily,
+              primarySwatch: Colors.blueGrey,
+              backgroundColor: Color.fromARGB(255, 35, 40, 50)),
+          home: HomePage(),
         ),
       ),
     );
