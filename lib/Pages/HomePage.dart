@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                 unselectedLabelColor: Colors.white,
                 tabs: <Widget>[
                   Tab(text: 'Home'),
-                  Tab(text: 'Catalogue'),
+                  Tab(text: 'Faculties'),
                   Tab(text: 'Map'),
                   Tab(text: 'Admissions'),
                   Tab(text: 'Mission'),

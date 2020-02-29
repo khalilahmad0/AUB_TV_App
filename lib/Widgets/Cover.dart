@@ -91,7 +91,7 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
           children: <Widget>[
             Container(
               child: Image.network(
-                  "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX6882671.jpg"),
+                  widget.item.image),
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(_focusAlpha),
@@ -102,14 +102,14 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
             ),
             Align(
               child: Text(
-                "Test",
-                maxLines: 1,
+                widget.item.title,
+                maxLines: 2,
                 style: TextStyle(color: Colors.white),
               ),
               alignment: Alignment.center,
             ),
             Align(
-              child: Text("dd/mm/yyyy".toString(),
+              child: Text(widget.item.date,
                   style: TextStyle(
                       color: Color.fromARGB(70, 255, 255, 255), fontSize: 10)),
               alignment: Alignment.center,
@@ -154,11 +154,12 @@ Widget CoverListView2(BuildContext context, String dataType) {
     int itemCount = orientation == Orientation.landscape ? 3 : 6;
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: itemCount, childAspectRatio: 0.809862),
+          crossAxisCount: itemCount, childAspectRatio: 0.7097),
       itemCount: itemCount,
       shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
         DataModel item = list[index];
+//        print(item.title);
         return Container(
           child: Cover(
             item: item,
