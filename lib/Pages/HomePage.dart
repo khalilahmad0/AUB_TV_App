@@ -5,6 +5,7 @@ import 'package:aub/Tabs/CatalogueTab.dart';
 import 'package:aub/Tabs/AdmissionsTab.dart';
 import 'package:aub/Tabs/MissionTab.dart';
 import 'package:aub/Tabs/FAQTab.dart';
+import 'package:aub/Tabs/OurStoryTab.dart';
 import 'package:flutter/material.dart';
 //RawKeyboardListener
 
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
+      length: 7,
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 35, 40, 50),
         appBar: AppBar(
@@ -50,6 +51,7 @@ class _HomePageState extends State<HomePage> {
                   Tab(text: 'Admissions'),
                   Tab(text: 'Mission'),
                   Tab(text: 'FAQ'),
+                  Tab(text: 'Our Story'),
                 ],
               )
             ],
@@ -71,6 +73,7 @@ class _HomePageState extends State<HomePage> {
               AdmissionsTab(),
               MissionTab(),
               FAQTab(),
+              OurStoryTab(),
             ],
           ),
         ),
