@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blueGrey,
               backgroundColor: Color.fromARGB(255, 35, 40, 50)),
           home: HomePage(),
+
         ),
       ),
     );
