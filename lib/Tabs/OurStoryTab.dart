@@ -22,7 +22,7 @@ class _OurStoryTabState extends State<OurStoryTab> {
               color: Color.fromARGB(255, 35, 40, 50),
               height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width,
-              child: Text("this part of the textbox is made to include how the team embers met and how the team was formed!",style: TextStyle(color: Colors.white70), textAlign: TextAlign.center),
+              child: Text("this part of the textbox is made to include how the team members met and how the team was formed!",style: TextStyle(color: Colors.white70), textAlign: TextAlign.center),
             ),
             Row(
               children: <Widget>[
