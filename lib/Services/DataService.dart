@@ -59,6 +59,41 @@ class DataService {
     return newsList;
   }
 
+  static getfaq() {
+    var title1 = "What kind of accommodation facilities are there on campus?";
+    var content1 = " ​There are six residence halls on campus (four for women and two for men) in addition to one off campus (for women). For more information, please contact the Office of Student Housing at http://www.aub.edu.lb/sao/housing.";
+
+
+    var title2 = "Can I postpone my acceptance to a later term?";
+    var content2 = "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ ​You may request to postpone your acceptance by one term; by replying to your acceptance email and requesting it.  We will review your request and provide you feedback or confirmation regarding your postponement request.";
+
+    var title3 = "I have completed Grade 11, can I apply to AUB UPP Program?";
+    var content3 = " ​Applicants should have completed at least twelve years of schooling, or equivalent, before joining any program at AUB including UPP.  Applicants to the UPP program must submit the UPP application form and the high school transcripts along with a high school recommendation letter.";
+
+
+    var title4 = "What qualifications do I need to have to be awarded a graduate assistantship (GA) upon admission to the MA program as a regular student?";
+    var content4 = "A GA can be awarded to students coming to us with a very good GPA.  We are also looking at your overall record, your potential for being a hard-working student in your MA coursework and for writing a strong thesis.  If you have been a very good undergraduate with a GPA above 80, or the equivalent thereof in your institution, there is a good chance of you getting a GA.  The decision is not based solely on the GPA, but it is an important indicator of your achievement.  You should be aware that a specific timeline for completion of your coursework and thesis proposal applies for those holding a GA.";
+
+
+    var title5 = "I am doing my pre-med major at another university, can I apply to AUB MD program?";
+    var content5 = "Every year AUB receives a number of applications from Lebanon and overseas from students who did not complete their bachelor studies at AUB.  Thus, you can apply to AUB MD program as long as you have completed all the pre-medical core courses as listed in the AUB catalogue and you meet the other admission requirements.You may contact the school of medicine to clarify if the pre-medical courses taken outside AUB are equivalent to AUB courses:  http://www.aub.edu.lb/fm/";
+
+
+    var title6 = "Can I pay using my credit card at the Cashier?";
+    var content6 = "No cash or credit card payments can be made at AUB cashier.";
+
+    List<DataModel> faqlist = [
+      DataModel(title: title1, content: content1),
+      DataModel(title: title2, content: content2),
+      DataModel(title: title3, content: content3),
+      DataModel(title: title4, content: content4),
+      DataModel(title: title5, content: content5),
+      DataModel(title: title6, content: content6),
+    ];
+
+    return faqlist;
+  }
+
   static getVideos() {
 
   }
