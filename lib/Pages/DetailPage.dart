@@ -1,115 +1,123 @@
-//import 'dart:ui';
-//
-//import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
-//import 'package:google_fonts/google_fonts.dart';
-//import 'package:provider/provider.dart';
-//import 'package:transparent_image/transparent_image.dart';
-//
-//
-//import 'package:aub/Services/TraktService.dart';
-//import 'package:aub/Widgets/Cover.dart';
-//import 'package:aub/Widgets/Episode.dart';
-//
-//class DetailPage extends StatefulWidget {
-//  final TraktModel item;
-//  DetailPage(this.item);
-//  @override
-//  _DetailPageState createState() => _DetailPageState();
-//}
-//
-//class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
-//
-//  TabController tabController;
-//
-//  @override
-//  void initState() {
-//
-//    super.initState();
-//  }
-//
-//  @override
-//  void dispose() {
-//    super.dispose();
-//  }
-//  @override
-//  Widget build(BuildContext context) {
-//    return Shortcuts(
-//      // needed for AndroidTV to be able to select
-//      shortcuts: {LogicalKeySet(LogicalKeyboardKey.select): const Intent(ActivateAction.key)},
-//      child: MaterialApp(
-//        theme: ThemeData(
-//          primarySwatch: Colors.blue,
-//          fontFamily: GoogleFonts.openSans().fontFamily,
-//
-//        ),
-//        home: Scaffold(
-//          body: Container(
-//            color: Colors.black,
-//            child: Stack(
-//              children: <Widget>[
-//                buildBackdropImage(context),
-//                Container(
-//                  width: double.infinity,
-//                  height: double.infinity,
-//                  decoration: BoxDecoration(
-//                    gradient: LinearGradient(
-//                      begin: Alignment.centerLeft,
-//                      end: Alignment.centerRight,
-//                      colors: [Colors.black.withAlpha(230), Colors.transparent]
-//                    )
-//                  ),
-//                  child: buildItemDetails()
-//                ),
-//              ],
-//            ),
-//          )
-//        ),
-//      ),
-//    );
-//  }
-//
-//  Widget buildBackdropImage(BuildContext context) {
-//    return Stack(
-//      children: <Widget>[
-//        FadeInImage.memoryNetwork(
-//          placeholder: kTransparentImage,
-//          image: (widget.item.fanart != null && widget.item.fanart.backDrop != null) ? widget.item.fanart.backDrop : kTransparentImage,
-//          fit: BoxFit.cover,
-//          width: double.infinity,
-//          height: double.infinity,
-//        ),
-//        // Positioned(
-//        //   top: 0,
-//        //   left: 0,
-//        //   bottom: 0,
-//        //   right: 0,
-//        //   child: BackdropFilter(
-//        //     filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
-//        //     // child: Container(color: Colors.black.withOpacity(0)),
-//        //   ),
-//        // )
-//      ],
-//    );
-//  }
-//
-//  Widget buildItemDetails() {
-//    return Padding(
-//      padding: const EdgeInsets.all(50.0),
-//      child: Row(
-//        crossAxisAlignment: CrossAxisAlignment.start,
-//        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//
-//        children: <Widget>[
-//          Flexible(
-//            flex: 5,
-//            child: Column(
-//              children: <Widget>[
-//                Align(alignment: Alignment.topLeft,
-//                  child: Text(widget.item.title,
-//                    style: GoogleFonts.oswald(textStyle: TextStyle(color: Colors.white, fontSize: 50)),
-//                  )
-//                ),
+import 'dart:ui';
+
+import 'package:aub/Models/DataModel.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
+
+import 'package:aub/Services/TraktService.dart';
+import 'package:aub/Widgets/Cover.dart';
+import 'package:aub/Widgets/Episode.dart';
+
+class DetailPage extends StatefulWidget {
+  final DataModel item;
+
+  DetailPage(this.item);
+
+  @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
+  TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Shortcuts(
+      // needed for AndroidTV to be able to select
+      shortcuts: {
+        LogicalKeySet(LogicalKeyboardKey.select):
+            const Intent(ActivateAction.key)
+      },
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: GoogleFonts.openSans().fontFamily,
+        ),
+        home: Scaffold(
+            body: Container(
+          color: Colors.black,
+          child: Stack(
+            children: <Widget>[
+              buildBackdropImage(context),
+              Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                        Colors.black.withAlpha(230),
+                        Colors.transparent
+                      ])),
+                  child: buildItemDetails()),
+            ],
+          ),
+        )),
+      ),
+    );
+  }
+
+  Widget buildBackdropImage(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image: (widget.item.media != null)
+              ? widget.item.media
+              : kTransparentImage,
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: double.infinity,
+        ),
+        // Positioned(
+        //   top: 0,
+        //   left: 0,
+        //   bottom: 0,
+        //   right: 0,
+        //   child: BackdropFilter(
+        //     filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
+        //     // child: Container(color: Colors.black.withOpacity(0)),
+        //   ),
+        // )
+      ],
+    );
+  }
+
+  Widget buildItemDetails() {
+    return Padding(
+      padding: const EdgeInsets.all(50.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Flexible(
+              flex: 5,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          widget.item.title,
+                          style: GoogleFonts.oswald(
+                              textStyle:
+                                  TextStyle(color: Colors.white, fontSize: 50)),
+                        )),
 //                SizedBox(height: 40),
 //                Row(
 //                  children: <Widget>[
@@ -126,44 +134,56 @@
 //                  )
 //                  ],
 //                ),
-//                SizedBox(height: 40),
-//                Align(alignment: Alignment.topLeft,
-//                  child: SizedBox(
-//                      width: 400,
-//                      child: Text(widget.item.overview, maxLines: 10,
-//                      style: TextStyle(color: Colors.white, fontSize: 10, height: 1.5),
-//                      ),
-//                  )
-//                ),
-//                SizedBox(height: 50),
-//                Row(
-//                  mainAxisSize: MainAxisSize.max,
-//                  children: <Widget>[
-//                    if(widget.item.isMovie())
-//                      RaisedButton(onPressed: (){},child: Text('PLAY'),color: Color.fromARGB(255, 255, 60, 70),textColor: Colors.white,), SizedBox(width: 20),
+                    SizedBox(height: 40),
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: SizedBox(
+                          width: 400,
+                          child: AutoSizeText(
+                            widget.item.content,
+                            style: TextStyle(
+                                color: Colors.white, fontSize: 20, height: 1.5),
+                          ),
+                        )),
+                    SizedBox(height: 50),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(Icons.arrow_back),
+                          color: Color.fromARGB(255, 255, 60, 70),
+                          textColor: Colors.white,
+                        ),
+                        SizedBox(width: 20),
+                        if (widget.item.isVideo())
+                          RaisedButton(
+                            onPressed: () {},
+                            child: Text('PLAY'),
+                            color: Color.fromARGB(255, 255, 60, 70),
+                            textColor: Colors.white,
+                          ),
+                        SizedBox(width: 20),
 //                    FlatButton(onPressed: (){},child: Text('Trailer'), color: Colors.white, ),
-//                  ],
-//                ),
-//              ],
-//            )
-//          ),
-//          if(widget.item.isShow())
+                      ],
+                    ),
+                  ],
+                ),
+              )),
+//          if(widget.item.isLive())
 //            Flexible(
 //              flex: 5,
 //              child: _buildSeasonsAndEpisodes(context),
 //            ),
-//
-//
-//
-//          // }
-//      ],),
-//    );
-//  }
-//
-//
-//
-//
-//
+
+          // }
+        ],
+      ),
+    );
+  }
+
 //  Widget _buildSeasonsAndEpisodes(BuildContext context) {
 //
 //    return FutureProvider<List<TraktModel>>(
@@ -241,6 +261,5 @@
 //      },
 //    );
 //  }
-//
-//
-//}
+
+}
