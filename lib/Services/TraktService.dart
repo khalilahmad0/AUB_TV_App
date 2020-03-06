@@ -6,7 +6,7 @@ import 'FanartService.dart';
 
 class TraktService {
   String apiVersion = '2';
-  String baseUrl = 'https://api.trakt.tv';
+  String baseUrl = 'https://firebasestorage.googleapis.com/v0/b/corona-d3ec9.appspot.com/o/dummy.json?alt=media&token=4a2dd544-8608-4d13-a1b2-3a88a7aad66c';
   String apiKey = '0382d8815ebf303ee57a69a88b02348afaf40bcb39b7053da6bb2da36ee800a3';
   String secretKey = '078b464ad3d02eefb44c0259dea679b40074dbfef0fd01947c9b59fc546010de';
 

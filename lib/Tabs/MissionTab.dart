@@ -8,6 +8,20 @@ class MissionTab extends StatefulWidget {
 class _MissionTabState extends State<MissionTab> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        backgroundColor: Color.fromARGB(255, 35, 40, 50),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Image.network("https://pbs.twimg.com/media/DX7DqY3WkAA-yt7.jpg", height: 300, width: 500,),
+                  Expanded(child: Text('The American University of Beirut (AUB) is an institution of higher learning founded to provide excellence in education, to participate  in the advancement of knowledge through research,and to serve the peoples of the Middle East and beyond. Chartered in New York State in 1863, the university bases its educational philosophy, standards, and practices on the American liberal arts model of higher education. ', style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),))
+                ],
+              )
+            ],
+          ),
+        )
+    );
   }
 }
