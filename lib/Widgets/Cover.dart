@@ -1,12 +1,8 @@
 import 'package:aub/Models/DataModel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:aub/Services/DataService.dart';
 import 'package:aub/Pages/DetailPage.dart';
-import 'package:aub/Services/FanartService.dart';
-import 'package:aub/Services/TraktService.dart';
 
 class Cover extends StatefulWidget {
   const Cover({
@@ -90,8 +86,9 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             Container(
-              child: Image.network(
-                  widget.item.media),
+              child: widget.item.type == 'news'
+                  ? Image.network(widget.item.media)
+                  : Image.network(widget.item.poster),
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(_focusAlpha),
@@ -120,20 +117,24 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
     );
   }
 
-//  buildPosterImage2(BuildContext context){
-//    Future<List<DataModel>> news = Provider.of<DataService>(context).getNews(6);
-//    news.then((items) {print(items); Image.network(items[0].media);});
-//  }
-
   FutureProvider<DataModel> buildPosterImage(BuildContext context) {
     return FutureProvider<DataModel>(
       create: (_) => Provider.of<DataService>(context).getImage(widget.item),
       child: Consumer<DataModel>(
         builder: (context, fanart, _) {
           if (fanart != null && fanart.media != null) {
-            return Image.network(widget.item.media);
+            if (fanart.isNews()) {
+              return Image.network(widget.item.media);
+            } else if (fanart.isVideo()) {
+              return Image.network(widget.item.poster);
+            } else
+              return Image.network(
+                  "https://seeba.se/wp-content/themes/consultix/images/no-image-found-360x260.png",
+                  fit: BoxFit.fill);
           } else {
-            return Image.network("https://seeba.se/wp-content/themes/consultix/images/no-image-found-360x260.png", fit: BoxFit.fill);
+            return Image.network(
+                "https://seeba.se/wp-content/themes/consultix/images/no-image-found-360x260.png",
+                fit: BoxFit.fill);
             // return Image.memory(kTransparentImage);
           }
         },
@@ -142,10 +143,19 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
   }
 }
 
-Widget CoverListView2(BuildContext context, String endpoint) {
+Widget coverListView(BuildContext context, String endpoint) {
   return FutureProvider<List<DataModel>>(
     create: (_) {
-      return Provider.of<DataService>(context).getNews(6);
+      switch (endpoint) {
+        case ("news"):
+          return Provider.of<DataService>(context).getNews(6);
+        case ("video"):
+          return Provider.of<DataService>(context).getVideos(6);
+        case ("live"):
+          return Provider.of<DataService>(context).getNews(6);
+        default:
+          return Provider.of<DataService>(context).getNews(6);
+      }
     },
     child: Consumer<List<DataModel>>(
       builder: (context, items, _) {
@@ -163,7 +173,10 @@ Widget CoverListView2(BuildContext context, String endpoint) {
                   child: Cover(
                     item: item,
                     onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(item)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPage(item)));
                     },
                   ),
                   height: 10,
