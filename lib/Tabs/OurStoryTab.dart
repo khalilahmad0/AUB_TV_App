@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 
 class OurStoryTab extends StatefulWidget {
   @override
@@ -33,6 +31,8 @@ class _OurStoryTabState extends State<OurStoryTab> {
 //              color: Color.fromARGB(255, 35, 40, 50),
             child: Image(image: AssetImage('assets/team.jpg'))
         ),
+        Row(
+          children: <Widget>[
             Container(
               color: Color.fromARGB(255, 35, 40, 50),
               height: MediaQuery.of(context).size.height * 0.2,
@@ -71,8 +71,16 @@ class _OurStoryTabState extends State<OurStoryTab> {
                     )
                     ],
                   ),
-                ),
-              ],
+                  Container(
+                    color: Color.fromARGB(255, 35, 40, 50),
+                    width: MediaQuery.of(context).size.width / 2,
+                    alignment: Alignment.center,
+                    child: Text("this is a test for text box",
+                        style: TextStyle(color: Colors.white70),
+                        textAlign: TextAlign.center),
+                  )
+                ],
+              ),
             ),
             Row(
               children: <Widget>[
@@ -108,8 +116,20 @@ class _OurStoryTabState extends State<OurStoryTab> {
                       ),
                     ],
                   ),
-                ),
-              ],
+                  Container(
+                    color: Color.fromARGB(255, 35, 40, 50),
+                    width: MediaQuery.of(context).size.width / 2,
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Image.network(
+                          "https://ielhajj.github.io/photo.jpg",
+                          width: MediaQuery.of(context).size.width / 2,
+                          alignment: Alignment.center),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Row(children: <Widget>[
               Container(
@@ -184,9 +204,9 @@ class _OurStoryTabState extends State<OurStoryTab> {
       ],
 
             ),
-        ]
-      )
-      ),
+          ],
+        ),
+      ])),
     );
   }
 }

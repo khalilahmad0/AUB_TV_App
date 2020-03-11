@@ -19,7 +19,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  video_player:
+
   http: ^0.12.0+3
+
   transparent_image: ^1.0.0
   provider: ^4.0.1
   google_fonts: ^0.2.0
@@ -27,7 +30,8 @@ dependencies:
   flutter_cache_store: ^0.7.1
   intl: ^0.16.0
   carousel_pro: ^1.0.0
-
+  auto_size_text: ^2.1.0
+  video_player: ^0.10.8+1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -47,6 +51,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -70,10 +75,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+fonts:
+  - family: bebas
+    fonts:
+        - asset: fonts/Bebas-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

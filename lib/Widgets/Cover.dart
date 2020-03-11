@@ -1,12 +1,8 @@
 import 'package:aub/Models/DataModel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:aub/Services/DataService.dart';
 import 'package:aub/Pages/DetailPage.dart';
-import 'package:aub/Services/FanartService.dart';
-import 'package:aub/Services/TraktService.dart';
 
 class Cover extends StatefulWidget {
   const Cover({
@@ -90,8 +86,9 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             Container(
-              child: Image.network(
-                  widget.item.image),
+              child: widget.item.type == 'news'
+                  ? Image.network(widget.item.media)
+                  : Image.network(widget.item.poster),
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(_focusAlpha),
@@ -120,100 +117,76 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
     );
   }
 
-  buildPosterImage2(BuildContext context){
-    List news = DataService.getNews();
-    return Image.network(news[0].image1);
-  }
-
-//  FutureProvider<FanartItem> buildPosterImage(BuildContext context) {
-//    return FutureProvider<FanartItem>(
-//      create: (_) => Provider.of<FanartService>(context).getImages(widget.item),
-//      child: Consumer<FanartItem>(
-//        builder: (context, fanart, _) {
-//          if (fanart != null && fanart.poster != null) {
-//            widget.item.fanart = fanart;
-//            return FadeInImage.memoryNetwork(
-//              placeholder: kTransparentImage,
-//              image: widget.item.fanart.poster,
-//              fit: BoxFit.fill,
-//            );
-//          } else {
-//            return Image.memory(kTransparentImage, fit: BoxFit.fill);
-//            // return Image.memory(kTransparentImage);
-//          }
-//        },
-//      ),
-//    );
-//  }
-}
-
-Widget CoverListView2(BuildContext context, String dataType) {
-  var list = DataService.getNews();
-
-  return OrientationBuilder(builder: (context, orientation) {
-    int itemCount = orientation == Orientation.landscape ? 3 : 6;
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: itemCount, childAspectRatio: 0.7097),
-      itemCount: itemCount,
-      shrinkWrap: true,
-      itemBuilder: (BuildContext context, int index) {
-        DataModel item = list[index];
-//        print(item.title);
-        return Container(
-          child: Cover(
-            item: item,
-            onTap: () {
-//                    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(item)));
-            },
-          ),
-          height: 10,
-        );
-      },
+  FutureProvider<DataModel> buildPosterImage(BuildContext context) {
+    return FutureProvider<DataModel>(
+      create: (_) => Provider.of<DataService>(context).getImage(widget.item),
+      child: Consumer<DataModel>(
+        builder: (context, fanart, _) {
+          if (fanart != null && fanart.media != null) {
+            if (fanart.isNews()) {
+              return Image.network(widget.item.media);
+            } else if (fanart.isVideo()) {
+              return Image.network(widget.item.poster);
+            } else
+              return Image.network(
+                  "https://seeba.se/wp-content/themes/consultix/images/no-image-found-360x260.png",
+                  fit: BoxFit.fill);
+          } else {
+            return Image.network(
+                "https://seeba.se/wp-content/themes/consultix/images/no-image-found-360x260.png",
+                fit: BoxFit.fill);
+            // return Image.memory(kTransparentImage);
+          }
+        },
+      ),
     );
-  });
+  }
 }
 
-//
-//Widget CoverListView(BuildContext context, String endpoint) {
-//  return FutureProvider<List<TraktModel>>(
-//    create: (_) {
-//      switch (endpoint) {
-//        case 'news':
-//          return Provider.of<TraktService>(context).getData(6);
-//        case 'live':
-//          return Provider.of<TraktService>(context).getData(6);
-//        case 'videos':
-//          return Provider.of<TraktService>(context).getData(6);
-//      }
-//    },
-//    child: Consumer<List<TraktModel>>(
-//      builder: (context, items, _) {
-//        if (items != null) {
-//          return OrientationBuilder(builder: (context, orientation) {
-//            int itemCount = orientation == Orientation.landscape ? 3 : 6;
-//            return GridView.builder(
-//              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//                  crossAxisCount: itemCount, childAspectRatio: 0.809862),
-//              itemCount: itemCount,
-//              shrinkWrap: true,
-//              itemBuilder: (BuildContext context, int index) {
-//                TraktModel item = items[index];
-//                return Container(
-//                  child: Cover(
-//                    item: item,
-//                    onTap: () {
-////                    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(item)));
-//                    },
-//                  ),
-//                  height: 10,
-//                );
-//              },
-//            );
-//          });
-//        }
-//        return Text('loading');
-//      },
-//    ),
-//  );
-//}
+Widget coverListView(BuildContext context, String endpoint) {
+  return FutureProvider<List<DataModel>>(
+    create: (_) {
+      switch (endpoint) {
+        case ("news"):
+          return Provider.of<DataService>(context).getNews(6);
+        case ("video"):
+          return Provider.of<DataService>(context).getVideos(6);
+        case ("live"):
+          return Provider.of<DataService>(context).getNews(6);
+        default:
+          return Provider.of<DataService>(context).getNews(6);
+      }
+    },
+    child: Consumer<List<DataModel>>(
+      builder: (context, items, _) {
+        if (items != null) {
+          return OrientationBuilder(builder: (context, orientation) {
+            int itemCount = orientation == Orientation.landscape ? 3 : 6;
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: itemCount, childAspectRatio: 0.809862),
+              itemCount: itemCount,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                DataModel item = items[index];
+                return Container(
+                  child: Cover(
+                    item: item,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPage(item)));
+                    },
+                  ),
+                  height: 10,
+                );
+              },
+            );
+          });
+        }
+        return Text('loading');
+      },
+    ),
+  );
+}

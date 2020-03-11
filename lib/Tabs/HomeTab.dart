@@ -59,21 +59,7 @@ class _HomeTabState extends State<HomeTab> {
                 alignment: Alignment.topLeft,
               ),
             ),
-            CoverListView2(context, 'news'),
-            SizedBox(
-              height: 1,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Align(
-                child: Text(
-                  "Live Events",
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                alignment: Alignment.topLeft,
-              ),
-            ),
-            CoverListView2(context, 'live'),
+            coverListView(context, 'news'),
             SizedBox(
               height: 1,
             ),
@@ -87,8 +73,22 @@ class _HomeTabState extends State<HomeTab> {
                 alignment: Alignment.topLeft,
               ),
             ),
-            CoverListView2(context, 'videos'),
+            coverListView(context, 'video'),
             SizedBox(height: 1),
+            Padding(
+              padding: EdgeInsets.only(left: 15),
+              child: Align(
+                child: Text(
+                  "Live Events",
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+                alignment: Alignment.topLeft,
+              ),
+            ),
+            coverListView(context, 'live'),
+            SizedBox(
+              height: 1,
+            ),
           ],
         )));
   }
