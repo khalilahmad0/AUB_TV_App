@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:aub/Models/DataModel.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
-import 'package:flutter/material.dart';
 
 class DataService {
-  String baseUrl = 'https://firebasestorage.googleapis.com/v0/b/corona-d3ec9.appspot.com/o/dummy.json?alt=media&token=6c07bb99-46d5-4963-b87a-0c983c4eb8b0';
+  String baseUrl =
+      'https://firebasestorage.googleapis.com/v0/b/corona-d3ec9.appspot.com/o/dummy.json?alt=media&token=6c07bb99-46d5-4963-b87a-0c983c4eb8b0';
+  String baseUrl2 =
+      "https://firebasestorage.googleapis.com/v0/b/corona-d3ec9.appspot.com/o/dummy_videos.json?alt=media&token=2a595c3a-5b2c-4c6f-b52c-c7fba95ab7e3";
 
   Future<List<DataModel>> getNews(int limit) async {
     var res = await http.get('$baseUrl');
@@ -15,7 +16,7 @@ class DataService {
       List<DataModel> news = body
           .map(
             (dynamic item) => DataModel.fromJson(item, 'news'),
-      )
+          )
           .toList();
       return news;
     } else {
@@ -25,9 +26,31 @@ class DataService {
     }
   }
 
-  getImage(DataModel item){
-    if(item != null){
-      return item.media;
+  Future<List<DataModel>> getVideos(int limit) async {
+    var res = await http.get('$baseUrl2');
+    if (res.statusCode == 200) {
+      List<dynamic> body = jsonDecode(res.body);
+
+      List<DataModel> videos = body
+          .map(
+            (dynamic item) => DataModel.fromJson(item, 'video'),
+          )
+          .toList();
+      return videos;
+    } else {
+      print(res.statusCode);
+      print(res.body);
+      return List<DataModel>();
+    }
+  }
+
+  getImage(DataModel item) {
+    if (item != null) {
+      if (item.isNews()) {
+        return item.media;
+      } else if (item.isVideo()) {
+        return item.poster;
+      }
     }
   }
 

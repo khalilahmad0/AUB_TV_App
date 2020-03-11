@@ -1,16 +1,11 @@
 import 'dart:ui';
-
+import 'package:aub/Pages/VideoPage.dart';
 import 'package:aub/Models/DataModel.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
-
-import 'package:aub/Services/TraktService.dart';
-import 'package:aub/Widgets/Cover.dart';
-import 'package:aub/Widgets/Episode.dart';
 
 class DetailPage extends StatefulWidget {
   final DataModel item;
@@ -77,23 +72,17 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
       children: <Widget>[
         FadeInImage.memoryNetwork(
           placeholder: kTransparentImage,
-          image: (widget.item.media != null)
-              ? widget.item.media
-              : kTransparentImage,
+          image: (widget.item.type == 'news')
+              ? (widget.item.media != 'null')
+                  ? (widget.item.media)
+                  : kTransparentImage
+              : (widget.item.poster != 'null')
+                  ? (widget.item.poster)
+                  : kTransparentImage,
           fit: BoxFit.cover,
           width: double.infinity,
           height: double.infinity,
         ),
-        // Positioned(
-        //   top: 0,
-        //   left: 0,
-        //   bottom: 0,
-        //   right: 0,
-        //   child: BackdropFilter(
-        //     filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
-        //     // child: Container(color: Colors.black.withOpacity(0)),
-        //   ),
-        // )
       ],
     );
   }
@@ -118,22 +107,6 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                               textStyle:
                                   TextStyle(color: Colors.white, fontSize: 50)),
                         )),
-//                SizedBox(height: 40),
-//                Row(
-//                  children: <Widget>[
-//                    Icon(Icons.star, color: Color.fromARGB(255, 255, 180, 10), size: 30,),
-//                    SizedBox(width: 10),
-//                    Text(widget.item.rating.toStringAsPrecision(2) + " / 10", style: TextStyle(color: Colors.white),),
-//                    SizedBox(width: 30),
-//                    Icon(Icons.timer, color: Colors.white, size: 30,),
-//                    SizedBox(width: 10),
-//                    Text(widget.item.runtime.toString() + " minutes", style: TextStyle(color: Colors.white),),
-//                    SizedBox(width: 30),
-//                    Text(widget.item.year.toString(),
-//                    style: TextStyle(color: Colors.white),
-//                  )
-//                  ],
-//                ),
                     SizedBox(height: 40),
                     Align(
                         alignment: Alignment.topLeft,
@@ -160,7 +133,12 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                         SizedBox(width: 20),
                         if (widget.item.isVideo())
                           RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => VideoApp()));
+                            },
                             child: Text('PLAY'),
                             color: Color.fromARGB(255, 255, 60, 70),
                             textColor: Colors.white,
@@ -172,94 +150,8 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                   ],
                 ),
               )),
-//          if(widget.item.isLive())
-//            Flexible(
-//              flex: 5,
-//              child: _buildSeasonsAndEpisodes(context),
-//            ),
-
-          // }
         ],
       ),
     );
   }
-
-//  Widget _buildSeasonsAndEpisodes(BuildContext context) {
-//
-//    return FutureProvider<List<TraktModel>>(
-//      create: (_) {
-//          return Provider.of<TraktService>(context).getSeasons(widget.item);
-//      },
-//      child: Consumer<List<TraktModel>>(
-//        builder: (context,items,_) {
-//          if(items != null) {
-//            TabController _tabController = TabController(
-//              length: items.length,
-//              vsync: this
-//            );
-//            return Column(
-//            children: <Widget>[
-//              Material(
-//                color: Colors.transparent,
-//                child: Padding(
-//                  padding: const EdgeInsets.only(left: 20),
-//                  child: Align(
-//                      alignment: Alignment.topLeft,
-//                      child: SizedBox(
-//                        height: 160,
-//                        child: ListView.builder(
-//                          itemCount: items.length,
-//                          itemBuilder: (context, index) {
-//                            return Container(child:
-//                              Cover(item: items[index],
-//                              onTap: () {
-//                                _tabController.animateTo(index);
-//                              },
-//                            ), width: 80, height: 160);
-//                          },
-//                          scrollDirection: Axis.horizontal,
-//                        ),
-//                      ),
-//                      // child: TabBar(
-//                      //   controller: _tabController,
-//                      //   labelPadding: EdgeInsets.all(5),
-//                      //   isScrollable: true,
-//                      //   indicatorColor: Colors.white.withAlpha(0),
-//                      //   tabs: <Widget>[
-//                      //     for(var season in items) Container(child: Cover(item: season), width: 80, height: 160),
-//                      //     // for(var season in items) Tab(text: season.title),
-//                      //   ],
-//                      // ),
-//                  ),
-//                ),
-//              ),
-//              Expanded(
-//                child: TabBarView(
-//                  controller: _tabController,
-//                  children: <Widget>[
-//                    for(var season in items) episodeList(season.episodes, widget.item)
-//                  ],
-//                ),
-//              ),
-//
-//            ],
-//              );
-//          }
-//          return Text('loading');
-//        },
-//      ),
-//    );
-//
-//  }
-//
-//
-//  Widget episodeList(List<TraktModel> episodes, TraktModel show) {
-//    return ListView.builder(
-//      itemCount: episodes.length,
-//      itemBuilder: (context, index) {
-//        return Episode(item: episodes[index]);
-//      },
-//    );
-//  }
-
 }

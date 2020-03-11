@@ -2,7 +2,6 @@ import 'package:aub/Pages/DetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:aub/Widgets/Cover.dart';
-import 'package:aub/Services/TraktService.dart';
 
 class CatalogueTab extends StatefulWidget {
   @override
