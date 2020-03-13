@@ -34,11 +34,11 @@ class _AdmissionsTabState extends State<AdmissionsTab> {
     }
   }
   @override
-  void deactivate() {
-    playerController.setVolume(0.0);
-    playerController.removeListener(listener);
-    super.deactivate();
-  }
+//  void deactivate() {
+//    playerController.setVolume(0.0);
+//    playerController.removeListener(listener);
+//    super.deactivate();
+//  }
   @override
 
   Widget build(BuildContext context) {
