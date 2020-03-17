@@ -61,6 +61,13 @@ flutter:
     - assets/khalil.jpg
     - assets/mounir.jpg
     - assets/team.jpg
+    - assets/FAFS.jpg
+    - assets/FAS.JPG
+    - assets/FHS.jpg
+    - assets/FM.jpg
+    - assets/MSFEA.jpg
+    - assets/OSB.jpg
+    - assets/HSN.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
