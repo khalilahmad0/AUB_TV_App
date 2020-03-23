@@ -26,7 +26,7 @@ class _HomeTabState extends State<HomeTab> {
                       'https://aub.edu.lb/HomeRotator/1050x550%20rotator.jpg',
                     ),
                     Image.network(
-                      "https://www.aub.edu.lb/HomeRotator/02GRC291119-Graduate-Studies-Fall-2020-21-Announcement-Image-Rotator.jpg",
+                      "https://www.aub.edu.lb/HomeRotator/6.jpg",
                     ),
                     Image.network(
                       'https://www.aub.edu.lb/HomeRotator/AUB-Solidarity-Funds-website-rotator-1050x550px--fixed.jpg',

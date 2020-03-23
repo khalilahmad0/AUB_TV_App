@@ -1,8 +1,13 @@
 import 'package:aub/Models/DataModel.dart';
+import 'package:aub/Pages/FAS.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:aub/Services/DataService.dart';
 import 'package:aub/Pages/DetailPage.dart';
+import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
+import 'package:flutter_full_pdf_viewer/full_pdf_viewer_plugin.dart';
+import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 
 class Cover2 extends StatefulWidget {
 
@@ -77,7 +82,7 @@ class _Cover2State extends State<Cover2> with SingleTickerProviderStateMixin {
       focusNode: _node,
       focusColor: Colors.transparent,
       focusElevation: 0,
-      child: buildCover2(context),
+      child: widget.image == "" ? buildCover3(context) : buildCover2(context),
     );
   }
 
@@ -89,8 +94,9 @@ class _Cover2State extends State<Cover2> with SingleTickerProviderStateMixin {
         onTap: _onTap,
         child: Column(
           children: <Widget>[
-            Container(
-              child: Image(image: AssetImage(widget.image)),
+             Container(
+              child:
+              Image(image: AssetImage(widget.image)),
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(_focusAlpha),
@@ -112,5 +118,14 @@ class _Cover2State extends State<Cover2> with SingleTickerProviderStateMixin {
       ),
     );
   }
+  Widget buildCover3(BuildContext context) {
+    return ScaleTransition(
+      scale: _animation,
+      alignment: Alignment.center,
+      child: RaisedButton(onPressed: _onTap, child: Text(widget.text),color: Colors.white,)
+    );
+  }
+
+
 }
 
