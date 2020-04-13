@@ -20,13 +20,13 @@ class _MSFEAState extends State<MSFEA> {
     myList.add(Cover2(text: "Biomedical Engineering", image:"", onTap: null));
     myList.add(Cover2(text: "Chemical Engineering", image:"", onTap: null));
     myList.add(Cover2(text: "Civil Engineering", image:"", onTap: null));
-    myList.add(Cover2(text: "Computer and Communications Engineering", image:"", onTap: null));
+    myList.add(Cover2(text: "Computer and Communications \n Engineering", image:"", onTap: null));
     myList.add(Cover2(text: "Computer Science Engineering", image:"", onTap: null));
     myList.add(Cover2(text: "Construction Engineering", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MSFEA()));}));
     myList.add(Cover2(text: "Electrical and Computer Engineering", image:"", onTap: null));
     myList.add(Cover2(text: "Energy Studies", image:"", onTap: null));
     myList.add(Cover2(text: "Engineering Management", image:"", onTap: null));
-    myList.add(Cover2(text: "Environmental and Water Resources Engineering", image:"", onTap: null));
+    myList.add(Cover2(text: "Environmental and Water \n Resources  Engineering", image:"", onTap: null));
     myList.add(Cover2(text: "Environmental Technology", image:"", onTap: null));
     myList.add(Cover2(text: "Graphic Design", image:"", onTap: null));
     myList.add(Cover2(text: "Industrial Engineering", image:"", onTap: null));

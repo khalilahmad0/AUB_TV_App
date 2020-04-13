@@ -44,7 +44,7 @@ class _FMState extends State<FM> {
               ),),
           ),
           new GridView.count(
-            childAspectRatio: 4,
+            childAspectRatio: 3,
             crossAxisCount: 3,
             children: myList,
           ),
