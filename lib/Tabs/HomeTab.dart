@@ -23,7 +23,7 @@ class _HomeTabState extends State<HomeTab> {
                 child: Carousel(
                   images: [
                     Image.network(
-                      'https://aub.edu.lb/HomeRotator/1050x550 rotator EXTENDED.jpg',
+                      'https://www.aub.edu.lb/HomeRotator/1050x550 rotator EXTENDED.jpg',
                     ),
                     Image.network(
                       "https://www.aub.edu.lb/HomeRotator/6.jpg",

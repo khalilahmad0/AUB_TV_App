@@ -20,19 +20,19 @@ class _FAFSState extends State<FAFS> {
     myList.add(Cover2(text: "Animal Science", image:"", onTap: null));
     myList.add(Cover2(text: "Eco-system Management", image:"", onTap: null));
     myList.add(Cover2(text: "Food Safety", image:"", onTap: null));
-    myList.add(Cover2(text: "Food Science and Management", image:"", onTap: null));
+    myList.add(Cover2(text: "Food Science and  \n Management", image:"", onTap: null));
     myList.add(Cover2(text: "Food Security", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAFS()));}));
     myList.add(Cover2(text: "Food Technology", image:"", onTap: null));
     myList.add(Cover2(text: "Irrigation", image:"", onTap: null));
     myList.add(Cover2(text: "Landscape Architecture", image:"", onTap: null));
     myList.add(Cover2(text: "Nutrition", image:"", onTap: null));
     myList.add(Cover2(text: "Nutrition and Dietetics", image:"", onTap: null));
-    myList.add(Cover2(text: "Nutrition and Dietetics - Coordinated", image:"", onTap: null));
+    myList.add(Cover2(text: "Nutrition and Dietetics \n - Coordinated", image:"", onTap: null));
     myList.add(Cover2(text: "Plant Protection", image:"", onTap: null));
     myList.add(Cover2(text: "Plant Science", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAFS()));}));
     myList.add(Cover2(text: "Poultry Science", image:"", onTap: null));
     myList.add(Cover2(text: "Public Health Nutrition", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAFS()));}));
-    myList.add(Cover2(text: "Rural Community Development", image:"", onTap: null));
+    myList.add(Cover2(text: "Rural Community \n Development", image:"", onTap: null));
 
 
 

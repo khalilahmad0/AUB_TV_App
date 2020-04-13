@@ -4,11 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:aub/Services/DataService.dart';
+<<<<<<< lib/Widgets/Cover2.dart
 
+=======
+import 'package:aub/Pages/DetailPage.dart';
+import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
+import 'package:flutter_full_pdf_viewer/full_pdf_viewer_plugin.dart';
+import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
+import 'package:nice_button/nice_button.dart';
+>>>>>>> lib/Widgets/Cover2.dart
 
 class Cover2 extends StatefulWidget {
-
-
   const Cover2({
     Key key,
     @required this.text,
@@ -91,9 +97,8 @@ class _Cover2State extends State<Cover2> with SingleTickerProviderStateMixin {
         onTap: _onTap,
         child: Column(
           children: <Widget>[
-             Container(
-              child:
-              Image(image: AssetImage(widget.image)),
+            Container(
+              child: Image(image: AssetImage(widget.image)),
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(_focusAlpha),
@@ -115,14 +120,21 @@ class _Cover2State extends State<Cover2> with SingleTickerProviderStateMixin {
       ),
     );
   }
+
   Widget buildCover3(BuildContext context) {
+    var firstColor = Color.fromARGB(255, 60 , 0, 0), secondColor = Color.fromARGB(255, 140, 0, 0);
     return ScaleTransition(
-      scale: _animation,
-      alignment: Alignment.center,
-      child: RaisedButton(onPressed: _onTap, child: Text(widget.text),color: Colors.white,)
-    );
+        scale: _animation,
+        alignment: Alignment.center,
+//      child: RaisedButton(onPressed: _onTap, child: Text(widget.text),color: Colors.red,)
+        child: NiceButton(
+          radius: 10,
+          padding: const EdgeInsets.all(15),
+          text: widget.text,
+          fontSize: 14,
+          elevation: 20,
+          gradientColors: [secondColor, firstColor],
+          onPressed: _onTap,
+        ));
   }
-
-
 }
-

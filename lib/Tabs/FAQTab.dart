@@ -35,7 +35,7 @@ class _FAQTabState extends State<FAQTab> {
     myList.add(Cover2(text: "Sophomore", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SophomoreFAQ()));}));
     myList.add(Cover2(text: "Transfer", image:"",  onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => TransferFAQ()));}));
     myList.add(Cover2(text: "Second Degree", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SecondDegreeFAQ()));}));
-    myList.add(Cover2(text: "Non-Degree, Visiting and Exchange", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => VisitingFAQ()));}));
+    myList.add(Cover2(text: "Non-Degree, Visiting and \n Exchange", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => VisitingFAQ()));}));
     myList.add(Cover2(text: "Diploma", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => DiplomaFAQ()));}));
     myList.add(Cover2(text: "Medicine", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => MedicineFAQ()));}));
     myList.add(Cover2(text: "Graduate", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => GraduateFAQ()));}));
@@ -45,6 +45,7 @@ class _FAQTabState extends State<FAQTab> {
 //      body: makeBody,
     body: new GridView.count(
       crossAxisCount: 4,
+      childAspectRatio: 1.5,
       children: myList,
     ),
 
