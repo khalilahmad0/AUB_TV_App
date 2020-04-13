@@ -17,7 +17,7 @@ class _OSBState extends State<OSB> {
     List<Cover2> myList = List<Cover2>();
     myList.add(Cover2(text: "Business Administration​", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => OSB()));}));
     myList.add(Cover2(text: "Business Analytics​", image:"", onTap: null));
-    myList.add(Cover2(text: "Executive Master of Business Administration", image:"", onTap: null));
+    myList.add(Cover2(text: "Executive Master of \n Business Administration", image:"", onTap: null));
     myList.add(Cover2(text: "Finance", image:"", onTap: null));
     myList.add(Cover2(text: "Human Resource Management", image:"", onTap: null));
 

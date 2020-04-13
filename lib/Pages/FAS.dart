@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:aub/Widgets/Cover2.dart';
 
+import 'PDFViewer.dart';
+
 class FAS extends StatefulWidget {
   @override
   _FASState createState() => _FASState();
@@ -12,11 +14,13 @@ class FAS extends StatefulWidget {
 
 
 
+
+
 class _FASState extends State<FAS> {
   Widget build(BuildContext context){
     List<Cover2> myList = List<Cover2>();
-    myList.add(Cover2(text: "Anthropology", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAS()));}));
-    myList.add(Cover2(text: "Applied Math", image:"", onTap: null));
+    myList.add(Cover2(text: "Anthropology", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViewer("https://www.aub.edu.lb/registrar/Documents/catalogue/undergraduate16-17/sams.pdf")));}));
+    myList.add(Cover2(text: "Applied Math", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViewer("http://www.orimi.com/pdf-test.pdf")));}));
     myList.add(Cover2(text: "Arab and Middle Eastern History", image:"", onTap: null));
     myList.add(Cover2(text: "Arabic Language and Literature", image:"", onTap: null));
     myList.add(Cover2(text: "Archaeology", image:"", onTap: null));
@@ -31,7 +35,7 @@ class _FASState extends State<FAS> {
     myList.add(Cover2(text: "Economics", image:"", onTap: null));
     myList.add(Cover2(text: "Education", image:"", onTap: null));
     myList.add(Cover2(text: "Education/Elementary", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAS()));}));
-    myList.add(Cover2(text: "Educational Management and Leadership Diplomas", image:"", onTap: null));
+    myList.add(Cover2(text: "Educational Management and \n Leadership Diplomas", image:"", onTap: null));
     myList.add(Cover2(text: "English Language", image:"", onTap: null));
     myList.add(Cover2(text: "English Literature", image:"", onTap: null));
     myList.add(Cover2(text: "Environmental Policy Planning", image:"", onTap: null));
@@ -75,8 +79,8 @@ class _FASState extends State<FAS> {
               ),),
             ),
             new GridView.count(
-              childAspectRatio: 5,
-              crossAxisCount: 4,
+              childAspectRatio: 4.5,
+              crossAxisCount: 3,
               children: myList,
             ),
           ],
