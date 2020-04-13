@@ -1,4 +1,4 @@
-package com.scryptech.tv_test_app
+package com.khalil_dev.aub_tv_app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

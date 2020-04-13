@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:aub/Models/DataModel.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 
 class DataService {
   String baseUrl =
-      'https://firebasestorage.googleapis.com/v0/b/corona-d3ec9.appspot.com/o/dummy.json?alt=media&token=6c07bb99-46d5-4963-b87a-0c983c4eb8b0';
+      'https://aubtvapp.000webhostapp.com/api/news/read.php';
   String baseUrl2 =
       "https://firebasestorage.googleapis.com/v0/b/corona-d3ec9.appspot.com/o/dummy_videos.json?alt=media&token=2a595c3a-5b2c-4c6f-b52c-c7fba95ab7e3";
 
@@ -27,6 +29,10 @@ class DataService {
   }
 
   Future<List<DataModel>> getVideos(int limit) async {
+    HttpClient client = new HttpClient();
+    client.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
+    IOClient ioClient = new IOClient(client);
+
     var res = await http.get('$baseUrl2');
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);

@@ -4,11 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:aub/Services/DataService.dart';
+<<<<<<< lib/Widgets/Cover2.dart
+
+=======
 import 'package:aub/Pages/DetailPage.dart';
 import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
 import 'package:flutter_full_pdf_viewer/full_pdf_viewer_plugin.dart';
 import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'package:nice_button/nice_button.dart';
+>>>>>>> lib/Widgets/Cover2.dart
 
 class Cover2 extends StatefulWidget {
   const Cover2({
