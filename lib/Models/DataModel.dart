@@ -1,3 +1,5 @@
+import 'package:html/parser.dart';
+
 class DataModel {
   String title;
   String content; //content of news or description of videos
@@ -25,11 +27,14 @@ class DataModel {
     DataModel item = DataModel();
 
     if (type == 'news') {
-      item.title = json[type]['title'] as String;
+      var parsedContent = parse(json['content'] as String);
+      String parsedString = parse(parsedContent.body.text).documentElement.text;
+
+      item.title = json['title'] as String;
       item.type = type;
-      item.content = json[type]['content'] as String;
-      item.media = json[type]['media'] as String;
-      item.date = json[type]['date'] as String;
+      item.content = parsedString;
+      item.media = json['media'] as String;
+      item.date = json['date'] as String;
     }
 
     if (type == 'video') {
