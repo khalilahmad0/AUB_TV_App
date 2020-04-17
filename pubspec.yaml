@@ -78,6 +78,9 @@ flutter:
     - assets/aublogo.png
     - assets/aublogo2.png
     - pdf-test.pdf
+    - assets/team1.jpeg
+    - assets/team2.jpeg
+    - assets/FASlogo.jfif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
