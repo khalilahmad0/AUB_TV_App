@@ -38,7 +38,7 @@ class StuffInTiles extends StatelessWidget {
             onLongPress: () => print(""),
             onTap: () => print(""),
             selected: true,
-            title: new Text(t.title,style: TextStyle(color: Colors.redAccent, fontSize: 20),),
+            title: new Text(t.title,style: TextStyle(color: Colors.white, fontSize: 20),),
           )
       );
 

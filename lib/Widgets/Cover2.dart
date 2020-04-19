@@ -1,13 +1,9 @@
-import 'package:aub/Models/DataModel.dart';
-import 'package:aub/Pages/FAS.dart';
 import 'package:flutter/material.dart';
+import 'package:nice_button/nice_button.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:aub/Services/DataService.dart';
 import 'package:aub/Pages/DetailPage.dart';
-//import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
-//import 'package:flutter_full_pdf_viewer/full_pdf_viewer_plugin.dart';
-//import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'package:nice_button/nice_button.dart';
 
 
