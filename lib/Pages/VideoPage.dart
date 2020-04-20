@@ -1,57 +1,50 @@
-import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class VideoApp extends StatefulWidget {
+class VideoScreen extends StatefulWidget {
+
+  final String id;
+
+  VideoScreen(this.id);
   @override
-  _VideoAppState createState() => _VideoAppState();
+  _VideoScreenState createState() => _VideoScreenState();
 }
 
-class _VideoAppState extends State<VideoApp> {
-  VideoPlayerController _controller;
+class _VideoScreenState extends State<VideoScreen> {
+
+  YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-        'https://www.ca-mo.com/app/uploads/2018/08/Dummy-Video-For-YouTube-API-Test.mp4')
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {});
-      });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Video Demo',
-      home: Scaffold(
-        body: Center(
-          child: _controller.value.initialized
-              ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
-              : Container(),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _controller.value.isPlaying
-                  ? _controller.pause()
-                  : _controller.play();
-            });
-          },
-          child: Icon(
-            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-          ),
-        ),
+    _controller = YoutubePlayerController(
+      initialVideoId: widget.id,
+      flags: YoutubePlayerFlags(
+        mute: false,
+        autoPlay: true,
       ),
     );
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
+  Widget build(BuildContext context) {
+    return Shortcuts(
+      shortcuts: {
+        LogicalKeySet(LogicalKeyboardKey.select):
+        const Intent(ActivateAction.key)
+      },
+      child: MaterialApp(
+        home: Scaffold(
+          body: YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            onReady: () {
+              print('Player is ready.');
+            },
+          ),
+        ),
+      ),
+    );
   }
 }
