@@ -38,12 +38,12 @@ class DataModel {
     }
 
     if (type == 'video') {
-      item.title = json[type]['title'] as String;
+      item.title = json['snippet']['title'] as String;
       item.type = type;
-      item.content = json[type]['content'] as String;
-      item.media = json[type]['media'] as String;
-      item.date = json[type]['date'] as String;
-      item.poster = json[type]['poster'] as String;
+      item.content = json['snippet']['description'] as String;
+      item.media = json['id']['videoId'] as String;
+      item.date = json['snippet']['publishedAt'] as String;
+      item.poster = json['snippet']['thumbnails']['high']['url'] as String;
     }
 
     if (type == 'live') {

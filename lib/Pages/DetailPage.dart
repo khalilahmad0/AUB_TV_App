@@ -137,7 +137,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => VideoApp()));
+                                      builder: (context) => VideoScreen(widget.item.media)));
                             },
                             child: Text('PLAY'),
                             color: Color.fromARGB(255, 255, 60, 70),
