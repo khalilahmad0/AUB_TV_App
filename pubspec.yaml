@@ -81,6 +81,12 @@ flutter:
     - assets/team1.jpeg
     - assets/team2.jpeg
     - assets/FASlogo.jfif
+    - assets/FAS22.jfif
+    - assets/nadia.jpg
+    - assets/nadia.png
+    - assets/fas.pdf
+    - assets/haidar.jpg
+    - assets/cmps.jfif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
