@@ -70,7 +70,7 @@ class _PDFViewerState extends State<PDFViewer> {
                 RaisedButton(
                   color: Colors.amber,
                   child: Text("Open PDF"),
-                  onPressed: () {Timer(Duration(seconds: 3), () {
+                  onPressed: () {Timer(Duration(seconds: 7), () {
                     if (urlPDFPath != null) {
                       Navigator.push(
                           context,

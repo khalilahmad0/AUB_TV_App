@@ -1,6 +1,7 @@
 import 'package:aub/Pages/SettingsPage.dart';
+import 'package:aub/Tabs/CMPSTab.dart';
 import 'package:aub/Tabs/HomeTab.dart';
-import 'package:aub/Tabs/MapTab.dart';
+import 'package:aub/Tabs/FASTab.dart';
 import 'package:aub/Tabs/CatalogueTab.dart';
 import 'package:aub/Tabs/AdmissionsTab.dart';
 import 'package:aub/Tabs/MissionTab.dart';
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 7,
+      length: 8,
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 35, 40, 50),
         appBar: AppBar(
@@ -38,8 +39,9 @@ class _HomePageState extends State<HomePage> {
                 height: MediaQuery.of(context).size.height * 0.25,
                 width: MediaQuery.of(context).size.height * 0.13,
               ),
-              SizedBox(width: 20),
+              SizedBox(width:10),
               TabBar(
+
                 isScrollable: true,
                 indicatorColor: Color.fromARGB(255, 255, 60, 70),
                 labelColor: Colors.red,
@@ -47,10 +49,11 @@ class _HomePageState extends State<HomePage> {
                 tabs: <Widget>[
                   Tab(text: 'Home'),
                   Tab(text: 'Faculties'),
-                  Tab(text: 'Map'),
                   Tab(text: 'Admissions'),
                   Tab(text: 'Mission'),
                   Tab(text: 'FAQ'),
+                  Tab(text: 'FAS'),
+                  Tab(text: 'CMPS'),
                   Tab(text: 'Our Story'),
                 ],
               )
@@ -69,10 +72,11 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               HomeTab(),
               CatalogueTab(),
-              MapTab(),
               AdmissionsTab(),
               MissionTab(),
               FAQTab(),
+              FASTab(),
+              CMPSTab(),
               OurStoryTab(),
             ],
           ),
