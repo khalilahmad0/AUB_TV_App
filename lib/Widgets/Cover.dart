@@ -86,7 +86,6 @@ class _CoverState extends State<Cover> with SingleTickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             Container(
-              height: 120,
               child: widget.item.type == 'news'
                   ? Image.network(widget.item.media)
                   : Image.network(widget.item.poster),
@@ -151,7 +150,7 @@ Widget coverListView(BuildContext context, String endpoint) {
         case ("news"):
           return Provider.of<DataService>(context).getNews(6);
         case("cmpsnews"):
-          return Provider.of<DataService>(context).getCMPSNews(6);
+          return Provider.of<DataService>(context).getNews(6);
         case ("video"):
           return Provider.of<DataService>(context).getVideos(6);
         case ("live"):
