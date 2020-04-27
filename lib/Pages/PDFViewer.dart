@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,12 +19,9 @@ class PDFViewer extends StatefulWidget {
   _PDFViewerState createState() => _PDFViewerState();
 }
 
-<<<<<<< lib/Pages/PDFViewer.dart
 class _PDFViewerState extends State<PDFViewer>
     with SingleTickerProviderStateMixin {
-=======
 class _PDFViewerState extends State<PDFViewer> {
->>>>>>> lib/Pages/PDFViewer.dart
   String assetPDFPath = "";
   String urlPDFPath = "";
 //  String NewNewURL=NewUrl;
@@ -108,19 +104,15 @@ class PdfViewPage extends StatefulWidget {
   _PdfViewPageState createState() => _PdfViewPageState();
 }
 
-<<<<<<< lib/Pages/PDFViewer.dart
 class _PdfViewPageState extends State<PdfViewPage>
     with SingleTickerProviderStateMixin {
-=======
 class _PdfViewPageState extends State<PdfViewPage> {
->>>>>>> lib/Pages/PDFViewer.dart
   int _totalPages = 0;
   int _currentPage = 0;
   bool pdfReady = false;
   PDFViewController _pdfViewController;
 
   @override
-<<<<<<< lib/Pages/PDFViewer.dart
   void initState() {
     super.initState();
   }
@@ -220,7 +212,7 @@ class _PdfViewPageState extends State<PdfViewPage> {
             ),
           ],
         ),
-=======
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -280,7 +272,6 @@ class _PdfViewPageState extends State<PdfViewPage> {
           )
               : Offstage(),
         ],
->>>>>>> lib/Pages/PDFViewer.dart
       ),
     );
   }
