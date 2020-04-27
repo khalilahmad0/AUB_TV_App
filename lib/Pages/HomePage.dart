@@ -1,11 +1,14 @@
+import 'package:aub/Pages/SettingsPage.dart';
 import 'package:aub/Tabs/CMPSTab.dart';
 import 'package:aub/Tabs/HomeTab.dart';
 import 'package:aub/Tabs/FASTab.dart';
 import 'package:aub/Tabs/CatalogueTab.dart';
+import 'package:aub/Tabs/AdmissionsTab.dart';
 import 'package:aub/Tabs/MissionTab.dart';
 import 'package:aub/Tabs/FAQTab.dart';
 import 'package:aub/Tabs/OurStoryTab.dart';
 import 'package:flutter/material.dart';
+//RawKeyboardListener
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -23,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 7,
+      length: 8,
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 35, 40, 50),
         appBar: AppBar(
@@ -46,27 +49,34 @@ class _HomePageState extends State<HomePage> {
                 tabs: <Widget>[
                   Tab(text: 'Home'),
                   Tab(text: 'Faculties'),
-//                  Tab(text: 'Admissions'),
-                  Tab(text: 'FAS'),
-                  Tab(text: 'CMPS'),
+                  Tab(text: 'Admissions'),
                   Tab(text: 'Mission'),
                   Tab(text: 'FAQ'),
+                  Tab(text: 'FAS'),
+                  Tab(text: 'CMPS'),
                   Tab(text: 'Our Story'),
                 ],
               )
             ],
           ),
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+//                Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
+                }),
+          ],
         ),
         body: Center(
           child: TabBarView(
             children: <Widget>[
               HomeTab(),
               CatalogueTab(),
-              FASTab(),
-              CMPSTab(),
-//              AdmissionsTab(),
+              AdmissionsTab(),
               MissionTab(),
               FAQTab(),
+              FASTab(),
+              CMPSTab(),
               OurStoryTab(),
             ],
           ),
