@@ -11,6 +11,7 @@ class DataService {
   String baseUrl2 =
       "https://www.googleapis.com/youtube/v3/search?key=$API_KEY"
       "&channelId=UCDchSdXKyty9eOcdLr6sLCQ&part=snippet,id&order=date&maxResults=6";
+  String cmpsApi = "https://aubtvapp.000webhostapp.com/api/news/read_cmps.php";
 
   Future<List<DataModel>> getNews(int limit) async {
     var res = await http.get('$baseUrl');
@@ -29,6 +30,22 @@ class DataService {
     }
   }
 
+  Future<List<DataModel>> getCMPSNews(int limit) async {
+    var res = await http.get('$cmpsApi');
+    if (res.statusCode == 200) {
+      List<dynamic> body = jsonDecode(res.body);
+      List<DataModel> news = body
+          .map(
+            (dynamic item) => DataModel.fromJson(item, 'news'),
+      )
+          .toList();
+      return news;
+    } else {
+      print(res.statusCode);
+      print(res.body);
+      return List<DataModel>();
+    }
+  }
   Future<List<DataModel>> getVideos(int limit) async {
     var res = await http.get('$baseUrl2');
     if (res.statusCode == 200) {
