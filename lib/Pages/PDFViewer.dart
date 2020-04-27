@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +19,8 @@ class PDFViewer extends StatefulWidget {
   _PDFViewerState createState() => _PDFViewerState();
 }
 
+class _PDFViewerState extends State<PDFViewer>
+    with SingleTickerProviderStateMixin {
 class _PDFViewerState extends State<PDFViewer> {
   String assetPDFPath = "";
   String urlPDFPath = "";
@@ -103,6 +104,8 @@ class PdfViewPage extends StatefulWidget {
   _PdfViewPageState createState() => _PdfViewPageState();
 }
 
+class _PdfViewPageState extends State<PdfViewPage>
+    with SingleTickerProviderStateMixin {
 class _PdfViewPageState extends State<PdfViewPage> {
   int _totalPages = 0;
   int _currentPage = 0;
@@ -110,6 +113,106 @@ class _PdfViewPageState extends State<PdfViewPage> {
   PDFViewController _pdfViewController;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Shortcuts(
+      shortcuts: {
+        LogicalKeySet(LogicalKeyboardKey.select):
+            const Intent(ActivateAction.key)
+      },
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              child: PDFView(
+                fitPolicy: FitPolicy.HEIGHT,
+                filePath: widget.path,
+                autoSpacing: true,
+                enableSwipe: true,
+                pageSnap: true,
+                swipeHorizontal: true,
+                nightMode: false,
+                onError: (e) {
+                  print(e);
+                },
+                onRender: (_pages) {
+                  setState(() {
+                    _totalPages = _pages;
+                    pdfReady = true;
+                  });
+                },
+                onViewCreated: (PDFViewController vc) {
+                  _pdfViewController = vc;
+                },
+                onPageChanged: (int page, int total) {
+                  setState(() {});
+                },
+                onPageError: (page, e) {},
+              ),
+            ),
+            !pdfReady
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Offstage(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                _currentPage > 0
+                    ? RaisedButton(
+                        focusColor: Colors.grey,
+                        onPressed: () {
+                          _currentPage -= 1;
+                          _pdfViewController.setPage(_currentPage);
+                        },
+                        elevation: 2.0,
+                        color: Colors.blueGrey,
+                        child: Icon(
+                          Icons.navigate_before,
+                          size: MediaQuery.of(context).size.height * 0.05,
+                          color: Colors.red,
+                        ),
+                        padding: EdgeInsets.all(
+                          MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        shape: CircleBorder(),
+                      )
+                    : Offstage(),
+                _currentPage + 1 < _totalPages
+                    ? RawMaterialButton(
+                        focusColor: Colors.grey,
+                        onPressed: () {
+                          _currentPage += 1;
+                          _pdfViewController.setPage(_currentPage);
+                        },
+                        elevation: 2.0,
+                        fillColor: Colors.blueGrey,
+                        child: Icon(
+                          Icons.navigate_next,
+                          size: MediaQuery.of(context).size.height * 0.05,
+                          color: Colors.red,
+                        ),
+                        padding: EdgeInsets.all(
+                          MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        shape: CircleBorder(),
+                      )
+                    : Offstage(),
+              ],
+            ),
+          ],
+        ),
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
