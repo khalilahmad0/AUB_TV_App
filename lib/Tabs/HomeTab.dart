@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:aub/Widgets/Cover3.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:aub/Widgets/Cover.dart';
@@ -36,26 +37,31 @@ class _HomeTabState extends State<HomeTab> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         var images = snapshot.data;
-                        return Carousel(
-                          images: [
-                            Image.network(
-                              images[0],
-                            ),
-                            Image.network(
-                              images[1],
-                            ),
-                            Image.network(
-                              images[2],
-                            ),
+                        return Stack(
+                          children: <Widget>[
+                            Cover3(image: ""),
+                            Carousel(
+                              images: [
+                                Image.network(
+                                  images[0],
+                                ),
+                                Image.network(
+                                  images[1],
+                                ),
+                                Image.network(
+                                  images[2],
+                                ),
+                              ],
+                              dotSize: 4.0,
+                              dotSpacing: 15.0,
+                              dotColor: Colors.blueGrey,
+                              indicatorBgPadding: 5.0,
+                              dotBgColor: Color.fromARGB(255, 35, 40, 50),
+                              borderRadius: true,
+                              moveIndicatorFromBottom: 180.0,
+                              noRadiusForIndicator: true,
+                            )
                           ],
-                          dotSize: 4.0,
-                          dotSpacing: 15.0,
-                          dotColor: Colors.blueGrey,
-                          indicatorBgPadding: 5.0,
-                          dotBgColor: Color.fromARGB(255, 35, 40, 50),
-                          borderRadius: true,
-                          moveIndicatorFromBottom: 180.0,
-                          noRadiusForIndicator: true,
                         );
                       } else if (snapshot.hasError) {
                         return Text("Error");
@@ -100,20 +106,6 @@ class _HomeTabState extends State<HomeTab> {
             ),
             coverListView(context, 'video'),
             SizedBox(height: 1),
-            Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Align(
-                child: Text(
-                  "Live Events",
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                alignment: Alignment.topLeft,
-              ),
-            ),
-            coverListView(context, 'live'),
-            SizedBox(
-              height: 1,
-            ),
           ],
         )));
   }
