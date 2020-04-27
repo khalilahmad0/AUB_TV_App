@@ -23,7 +23,8 @@ class PDFViewer extends StatefulWidget {
   _PDFViewerState createState() => _PDFViewerState();
 }
 
-class _PDFViewerState extends State<PDFViewer> with SingleTickerProviderStateMixin {
+class _PDFViewerState extends State<PDFViewer>
+    with SingleTickerProviderStateMixin {
   String assetPDFPath = "";
   String urlPDFPath = "";
 
@@ -121,7 +122,6 @@ class PdfViewPage extends StatefulWidget {
   _PdfViewPageState createState() => _PdfViewPageState();
 }
 
-
 class _PdfViewPageState extends State<PdfViewPage>
     with SingleTickerProviderStateMixin {
   int _totalPages = 0;
@@ -133,10 +133,12 @@ class _PdfViewPageState extends State<PdfViewPage>
   void initState() {
     super.initState();
   }
+
   @override
   void dispose() {
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Shortcuts(
@@ -184,8 +186,7 @@ class _PdfViewPageState extends State<PdfViewPage>
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 _currentPage > 0
-                    ?
-                    RaisedButton(
+                    ? RaisedButton(
                         focusColor: Colors.grey,
                         onPressed: () {
                           _currentPage -= 1;
