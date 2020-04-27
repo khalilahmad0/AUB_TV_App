@@ -1,92 +1,106 @@
-import 'package:aub/Pages/DetailPage.dart';
-import 'package:aub/Pages/Faculties/FAS.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:aub/Pages/PDFViewer.dart';
 import 'package:aub/Widgets/Cover2.dart';
-
-import '../PDFViewer.dart';
+import 'package:flutter/material.dart';
+import 'package:nice_button/NiceButton.dart';
 
 class FAS extends StatefulWidget {
   @override
   _FASState createState() => _FASState();
-
 }
-
-
-
-
 
 class _FASState extends State<FAS> {
-  Widget build(BuildContext context){
-    List<Cover2> myList = List<Cover2>();
-    myList.add(Cover2(text: "Anthropology", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViewer("https://www.aub.edu.lb/registrar/Documents/catalogue/undergraduate16-17/sams.pdf")));}));
-    myList.add(Cover2(text: "Applied Math", image:"", onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViewer("http://www.orimi.com/pdf-test.pdf")));}));
-    myList.add(Cover2(text: "Arab and Middle Eastern History", image:"", onTap: null));
-    myList.add(Cover2(text: "Arabic Language and Literature", image:"", onTap: null));
-    myList.add(Cover2(text: "Archaeology", image:"", onTap: null));
-    myList.add(Cover2(text: "Art History", image:"", onTap: null));
-    myList.add(Cover2(text: "Art History and Curating", image:"", onTap: null));
-    myList.add(Cover2(text: "Biology", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAS()));}));
-    myList.add(Cover2(text: "Cell and Molecular Biology", image:"", onTap: null));
-    myList.add(Cover2(text: "Chemistry", image:"", onTap: null));
-    myList.add(Cover2(text: "Clinical Psychology", image:"", onTap: null));
-    myList.add(Cover2(text: "Computational Science", image:"", onTap: null));
-    myList.add(Cover2(text: "Computer Science", image:"", onTap: null));
-    myList.add(Cover2(text: "Economics", image:"", onTap: null));
-    myList.add(Cover2(text: "Education", image:"", onTap: null));
-    myList.add(Cover2(text: "Education/Elementary", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAS()));}));
-    myList.add(Cover2(text: "Educational Management and \n Leadership Diplomas", image:"", onTap: null));
-    myList.add(Cover2(text: "English Language", image:"", onTap: null));
-    myList.add(Cover2(text: "English Literature", image:"", onTap: null));
-    myList.add(Cover2(text: "Environmental Policy Planning", image:"", onTap: null));
-    myList.add(Cover2(text: "Financial Economics", image:"", onTap: null));
-    myList.add(Cover2(text: "Geology", image:"", onTap: null));
-    myList.add(Cover2(text: "History​", image:"", onTap: null));
-    myList.add(Cover2(text: "Islamic Studies", image:"", onTap: null));
-    myList.add(Cover2(text: "Mathematics", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAS()));}));
-    myList.add(Cover2(text: "Media and Communication", image:"", onTap: null));
-    myList.add(Cover2(text: "Media Studies", image:"", onTap: null));
-    myList.add(Cover2(text: "Middle Eastern Studies", image:"", onTap: null));
-    myList.add(Cover2(text: "Petroleum Studies", image:"", onTap: null));
-    myList.add(Cover2(text: "Philosophy", image:"", onTap: null));
-    myList.add(Cover2(text: "Physics", image:"", onTap: null));
-    myList.add(Cover2(text: "Political Studies", image:"", onTap: null));
-    myList.add(Cover2(text: "Psychology", image:"", onTap: null));
-    myList.add(Cover2(text: "Public Administration", image:"", onTap: null));
-    myList.add(Cover2(text: "Public Policy and International Affairs", image:"" ,  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FAS()));}));
-    myList.add(Cover2(text: "Sociology", image:"", onTap: null));
-    myList.add(Cover2(text: "Sociology-Anthropology", image:"", onTap: null));
-    myList.add(Cover2(text: "Statistics", image:"", onTap: null));
-    myList.add(Cover2(text: "Studio Arts", image:"", onTap: null));
-    myList.add(Cover2(text: "Special Education", image:"", onTap: null));
-    myList.add(Cover2(text: "Teaching Diploma", image:"", onTap: null));
-    myList.add(Cover2(text: "Theoretical Physics", image:"", onTap: null));
-    myList.add(Cover2(text: "Transnational American Studies", image:"", onTap: null));
-
-
-    return new Scaffold(
-
-      backgroundColor: Color.fromARGB(255, 35, 40, 50),
-      body: Stack(
-          children: <Widget>[
-            Container(
-              child: Center(
-              child: new Image.asset(
-                'assets/background.jpg',
-                width: 1000,
-                height: 1000,
-                fit: BoxFit.fill,
-              ),),
-            ),
-            new GridView.count(
-              childAspectRatio: 4.5,
-              crossAxisCount: 3,
-              children: myList,
-            ),
-          ],
+  @override
+  Widget build(BuildContext context) {
+    var firstColor = Color.fromARGB(255, 60, 0, 0),
+        secondColor = Color.fromARGB(255, 140, 0, 0);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Faculty of Arts and Sciences"),
+        backgroundColor: Color.fromARGB(255, 35, 40, 50),
       ),
-    );
+        backgroundColor: Color.fromARGB(255, 35, 40, 50),
+        body: Column(children: <Widget>[
+          Row(
+            children: <Widget>[
+              Container(
+                color: Color.fromARGB(255, 35, 40, 50),
+                height: MediaQuery.of(context).size.height * 0.6,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: new EdgeInsets.all(8.0),
+                            decoration: new BoxDecoration(
+                                image: new DecorationImage(
+                                    image: AssetImage('assets/FAS22.jfif'))),
+//                        color: Color.fromARGB(255, 35, 40, 50),
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            alignment: Alignment.center,
+                          )),
+                    ),
+                    Container(
+                      child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            child: Text(
+                                "The Faculty of Arts and Sciences embodies AUB’s core commitment to the liberal arts and sciences. It offers undergraduate and graduate programs in the arts, humanities, and social, natural, and mathematical sciences, and is dedicated to advanced research in all of these domains. Through its freshmen and general education programs, it is the university’s principal gateway to higher studies and professional education. The faculty, through its teaching and research, promotes free inquiry, critical thinking, academic integrity, and respect for diversity and equality.",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 13),
+                                textAlign: TextAlign.center),
+
+//                        color: Color.fromARGB(255, 35, 40, 50),
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            alignment: Alignment.center,
+                          )),
+                    ),
+                    Container(
+                      child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            margin: new EdgeInsets.all(8.0),
+                            child: Cover2(
+                                text: "Dean Nadia El Cheikh",
+                                image: "assets/nadia.png"),
+
+//                        color: Color.fromARGB(255, 35, 40, 50),
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            alignment: Alignment.center,
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Container(
+                  color: Color.fromARGB(255, 35, 40, 50),
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  child: NiceButton(
+                    radius: 10,
+                    padding: const EdgeInsets.all(15),
+                    text: "Open Catalogue",
+                    fontSize: 14,
+                    elevation: 20,
+                    gradientColors: [secondColor, firstColor],
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PDFViewer(
+                                  "http://aubtvapp.000webhostapp.com/api/catalogues/FAS.php")));
+                    },
+                  )),
+            ],
+          ),
+        ]));
   }
-
 }
-
