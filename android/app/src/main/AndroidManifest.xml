@@ -7,9 +7,9 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="AUB"
-        android:icon="@mipmap/ic_launcher"
-        android:banner="@drawable/banner" >
+        android:banner="@drawable/banner"
+        android:icon="@mipmap/banner"
+        android:label="AUB">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
