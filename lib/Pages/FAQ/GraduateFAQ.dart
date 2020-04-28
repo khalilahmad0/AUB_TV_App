@@ -12,13 +12,15 @@ class GraduateFAQ extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 35, 40, 50),
       body: Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: new ListView.separated(
-          itemBuilder: (BuildContext context, int index) {
-            return stuffInTiles(context, listOfTiles[index]);
-          },
-          itemCount: listOfTiles.length,
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(height: 20),
+        child: SafeArea(
+          child: new ListView.separated(
+            itemBuilder: (BuildContext context, int index) {
+              return stuffInTiles(context, listOfTiles[index]);
+            },
+            itemCount: listOfTiles.length,
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(height: 20),
+          ),
         ),
       ),
     );
