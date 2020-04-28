@@ -67,9 +67,11 @@ class _CatalogueTabState extends State<CatalogueTab> {
 
     return new Scaffold(
       backgroundColor: Color.fromARGB(255, 35, 40, 50),
-      body: new GridView.count(
-        crossAxisCount: 4,
-        children: myList,
+      body: SafeArea(
+        child: new GridView.count(
+          crossAxisCount: 4,
+          children: myList,
+        ),
       ),
     );
   }

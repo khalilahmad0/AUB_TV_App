@@ -22,53 +22,55 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 7,
-      child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 35, 40, 50),
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Row(
-            children: <Widget>[
-              Image.network(
-                "https://www.aub.edu.lb/Style%20Library/AUB/images/logo.png",
-                height: MediaQuery.of(context).size.height * 0.25,
-                width: MediaQuery.of(context).size.height * 0.13,
-              ),
-              SizedBox(width:10),
-              TabBar(
+    return SafeArea(
+      child: DefaultTabController(
+        length: 7,
+        child: Scaffold(
+          backgroundColor: Color.fromARGB(255, 35, 40, 50),
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: Row(
+              children: <Widget>[
+                Image.network(
+                  "https://www.aub.edu.lb/Style%20Library/AUB/images/logo.png",
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: MediaQuery.of(context).size.height * 0.13,
+                ),
+                SizedBox(width:10),
+                TabBar(
 
-                isScrollable: true,
-                indicatorColor: Color.fromARGB(255, 255, 60, 70),
-                labelColor: Colors.red,
-                unselectedLabelColor: Colors.white,
-                tabs: <Widget>[
-                  Tab(text: 'Home'),
-                  Tab(text: 'Faculties'),
+                  isScrollable: true,
+                  indicatorColor: Color.fromARGB(255, 255, 60, 70),
+                  labelColor: Colors.red,
+                  unselectedLabelColor: Colors.white,
+                  tabs: <Widget>[
+                    Tab(text: 'Home'),
+                    Tab(text: 'Faculties'),
 //                  Tab(text: 'Admissions'),
-                  Tab(text: 'FAS'),
-                  Tab(text: 'CMPS'),
-                  Tab(text: 'Mission'),
-                  Tab(text: 'FAQ'),
-                  Tab(text: 'Our Story'),
-                ],
-              )
-            ],
+                    Tab(text: 'FAS'),
+                    Tab(text: 'CMPS'),
+                    Tab(text: 'Mission'),
+                    Tab(text: 'FAQ'),
+                    Tab(text: 'Our Story'),
+                  ],
+                )
+              ],
+            ),
           ),
-        ),
-        body: Center(
-          child: TabBarView(
-            children: <Widget>[
-              HomeTab(),
-              CatalogueTab(),
-              FASTab(),
-              CMPSTab(),
+          body: Center(
+            child: TabBarView(
+              children: <Widget>[
+                HomeTab(),
+                CatalogueTab(),
+                FASTab(),
+                CMPSTab(),
 //              AdmissionsTab(),
-              MissionTab(),
-              FAQTab(),
-              OurStoryTab(),
-            ],
+                MissionTab(),
+                FAQTab(),
+                OurStoryTab(),
+              ],
+            ),
           ),
         ),
       ),

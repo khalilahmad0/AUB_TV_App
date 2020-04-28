@@ -96,10 +96,12 @@ class _FAQTabState extends State<FAQTab> {
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 35, 40, 50),
-      body: new GridView.count(
-        crossAxisCount: 4,
-        childAspectRatio: 1.5,
-        children: myList,
+      body: SafeArea(
+        child: new GridView.count(
+          crossAxisCount: 4,
+          childAspectRatio: 1.5,
+          children: myList,
+        ),
       ),
     );
   }

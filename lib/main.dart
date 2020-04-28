@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
               fontFamily: GoogleFonts.openSans().fontFamily,
               primarySwatch: Colors.blueGrey,
               backgroundColor: Color.fromARGB(255, 35, 40, 50)),
-          home: HomePage(),
+          home: SafeArea(child: HomePage()),
         ),
       ),
     );

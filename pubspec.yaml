@@ -99,6 +99,7 @@ flutter:
     - assets/logoFM.jpg
     - assets/deanFHS.jpg
     - assets/logoFHS.jpg
+    - assets/FAFS.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

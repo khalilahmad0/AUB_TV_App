@@ -24,90 +24,93 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 35, 40, 50),
-        body: SingleChildScrollView(
-            child: Column(
-          children: <Widget>[
-            Container(
-              color: Color.fromARGB(255, 35, 40, 50),
-              child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  child: FutureBuilder(
-                    future: carouselImages,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        var images = snapshot.data;
-                        return Stack(
-                          children: <Widget>[
-                            Cover3(image: ""),
-                            Carousel(
-                              images: [
-                                Image.network(
-                                  images[0],
-                                ),
-                                Image.network(
-                                  images[1],
-                                ),
-                                Image.network(
-                                  images[2],
-                                ),
-                              ],
-                              dotSize: 4.0,
-                              dotSpacing: 15.0,
-                              dotColor: Colors.blueGrey,
-                              indicatorBgPadding: 5.0,
-                              dotBgColor: Color.fromARGB(255, 35, 40, 50),
-                              borderRadius: true,
-                              moveIndicatorFromBottom: 180.0,
-                              noRadiusForIndicator: true,
-                            )
-                          ],
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text("Error");
-                      }
+        body: SafeArea(
+          minimum: EdgeInsets.all(10),
+          child: SingleChildScrollView(
+              child: Column(
+            children: <Widget>[
+              Container(
+                color: Color.fromARGB(255, 35, 40, 50),
+                child: SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    child: FutureBuilder(
+                      future: carouselImages,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          var images = snapshot.data;
+                          return Stack(
+                            children: <Widget>[
+                              Cover3(image: ""),
+                              Carousel(
+                                images: [
+                                  Image.network(
+                                    images[0],
+                                  ),
+                                  Image.network(
+                                    images[1],
+                                  ),
+                                  Image.network(
+                                    images[2],
+                                  ),
+                                ],
+                                dotSize: 4.0,
+                                dotSpacing: 15.0,
+                                dotColor: Colors.blueGrey,
+                                indicatorBgPadding: 5.0,
+                                dotBgColor: Color.fromARGB(255, 35, 40, 50),
+                                borderRadius: true,
+                                moveIndicatorFromBottom: 180.0,
+                                noRadiusForIndicator: true,
+                              )
+                            ],
+                          );
+                        } else if (snapshot.hasError) {
+                          return Text("Error");
+                        }
 
-                      return Center(
-                        child: SizedBox(
-                          child: CircularProgressIndicator(),
-                          height: 50,
-                          width: 50,
-                        ),
-                      );
-                    },
-                  )),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Align(
-                child: Text(
-                  "News",
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                alignment: Alignment.topLeft,
+                        return Center(
+                          child: SizedBox(
+                            child: CircularProgressIndicator(),
+                            height: 50,
+                            width: 50,
+                          ),
+                        );
+                      },
+                    )),
               ),
-            ),
-            coverListView(context, 'news'),
-            SizedBox(
-              height: 1,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Align(
-                child: Text(
-                  "Videos",
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                alignment: Alignment.topLeft,
+              SizedBox(
+                height: 20,
               ),
-            ),
-            coverListView(context, 'video'),
-            SizedBox(height: 1),
-          ],
-        )));
+              Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Align(
+                  child: Text(
+                    "News",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                  alignment: Alignment.topLeft,
+                ),
+              ),
+              coverListView(context, 'news'),
+              SizedBox(
+                height: 1,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Align(
+                  child: Text(
+                    "Videos",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                  alignment: Alignment.topLeft,
+                ),
+              ),
+              coverListView(context, 'video'),
+              SizedBox(height: 1),
+            ],
+          )),
+        ));
   }
 
   getCarouselImages() async {

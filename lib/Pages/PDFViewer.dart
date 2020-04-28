@@ -80,30 +80,32 @@ class _PDFViewerState extends State<PDFViewer>
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           backgroundColor: Color.fromARGB(255, 35, 40, 50),
-          body: Center(
-            child: Builder(
-              builder: (context) => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton(
-                    color: Colors.amber,
-                    child: Text("Open PDF"),
-                    onPressed: () {
-                      Timer(Duration(seconds: 2), () {
-                        if (urlPDFPath != null) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      PdfViewPage(path: urlPDFPath)));
-                        }
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
+          body: SafeArea(
+            child: Center(
+              child: Builder(
+                builder: (context) => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    RaisedButton(
+                      color: Colors.amber,
+                      child: Text("Open PDF"),
+                      onPressed: () {
+                        Timer(Duration(seconds: 2), () {
+                          if (urlPDFPath != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        PdfViewPage(path: urlPDFPath)));
+                          }
+                        });
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -45,91 +45,93 @@ class _VideoScreenState extends State<VideoScreen>
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           backgroundColor: Color.fromARGB(255, 35, 40, 50),
-          body: Column(
-            children: <Widget>[
-              Container(
-                height: MediaQuery.of(context).size.height * 0.9,
-                child: YoutubePlayer(
-                  controller: _controller,
-                  showVideoProgressIndicator: true,
-                  onReady: () {
-                    print('Player is ready.');
-                  },
+          body: SafeArea(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.9,
+                  child: YoutubePlayer(
+                    controller: _controller,
+                    showVideoProgressIndicator: true,
+                    onReady: () {
+                      print('Player is ready.');
+                    },
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RawMaterialButton(
-                    focusColor: Colors.grey,
-                    onPressed: () {
-                      setState(() {
-                        var position = _controller.value.position.inSeconds;
-                        _controller.seekTo(Duration(seconds: position - 10));
-                      });
-                    },
-                    elevation: 2.0,
-                    fillColor: Colors.white,
-                    child: Icon(
-                      Icons.fast_rewind,
-                      size: MediaQuery.of(context).size.height * 0.05,
-                      color: Colors.red,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    RawMaterialButton(
+                      focusColor: Colors.grey,
+                      onPressed: () {
+                        setState(() {
+                          var position = _controller.value.position.inSeconds;
+                          _controller.seekTo(Duration(seconds: position - 10));
+                        });
+                      },
+                      elevation: 2.0,
+                      fillColor: Colors.white,
+                      child: Icon(
+                        Icons.fast_rewind,
+                        size: MediaQuery.of(context).size.height * 0.05,
+                        color: Colors.red,
+                      ),
+                      padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      shape: CircleBorder(),
                     ),
-                    padding: EdgeInsets.all(
-                      MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    shape: CircleBorder(),
-                  ),
-                  RawMaterialButton(
-                    onPressed: () {
-                      setState(() {
+                    RawMaterialButton(
+                      onPressed: () {
+                        setState(() {
 //                        // If the video is playing, pause it.
-                        if (_controller.value.isPlaying) {
-                          _controller.pause();
-                          playPause = Icons.play_arrow;
-                        } else {
+                          if (_controller.value.isPlaying) {
+                            _controller.pause();
+                            playPause = Icons.play_arrow;
+                          } else {
 //                          // If the video is paused, play it.
-                          _controller.play();
-                          playPause = Icons.pause;
-                        }
-                      });
-                    },
-                    elevation: 2.0,
-                    fillColor: Colors.white,
-                    child: Icon(
-                      playPause,
-                      size: MediaQuery.of(context).size.height * 0.05,
-                      color: Colors.red,
+                            _controller.play();
+                            playPause = Icons.pause;
+                          }
+                        });
+                      },
+                      elevation: 2.0,
+                      fillColor: Colors.white,
+                      child: Icon(
+                        playPause,
+                        size: MediaQuery.of(context).size.height * 0.05,
+                        color: Colors.red,
+                      ),
+                      padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      shape: CircleBorder(),
+                      focusColor: Colors.grey,
                     ),
-                    padding: EdgeInsets.all(
-                      MediaQuery.of(context).size.height * 0.01,
+                    RawMaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          var position = _controller.value.position.inSeconds;
+                          _controller.seekTo(Duration(seconds: position + 10));
+                        });
+                      },
+                      elevation: 2.0,
+                      fillColor: Colors.white,
+                      focusColor: Colors.grey,
+                      child: Icon(
+                        Icons.fast_forward,
+                        size: MediaQuery.of(context).size.height * 0.05,
+                        color: Colors.red,
+                      ),
+                      padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      shape: CircleBorder(),
                     ),
-                    shape: CircleBorder(),
-                    focusColor: Colors.grey,
-                  ),
-                  RawMaterialButton(
-                    onPressed: () {
-                      setState(() {
-                        var position = _controller.value.position.inSeconds;
-                        _controller.seekTo(Duration(seconds: position + 10));
-                      });
-                    },
-                    elevation: 2.0,
-                    fillColor: Colors.white,
-                    focusColor: Colors.grey,
-                    child: Icon(
-                      Icons.fast_forward,
-                      size: MediaQuery.of(context).size.height * 0.05,
-                      color: Colors.red,
-                    ),
-                    padding: EdgeInsets.all(
-                      MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    shape: CircleBorder(),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
