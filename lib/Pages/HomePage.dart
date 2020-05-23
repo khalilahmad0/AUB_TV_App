@@ -32,8 +32,9 @@ class _HomePageState extends State<HomePage> {
             elevation: 0,
             title: Row(
               children: <Widget>[
-                Image.network(
-                  "https://www.aub.edu.lb/Style%20Library/AUB/images/logo.png",
+
+                Image.asset(
+                  "assets/logo.png",
                   height: MediaQuery.of(context).size.height * 0.25,
                   width: MediaQuery.of(context).size.height * 0.13,
                 ),

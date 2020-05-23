@@ -60,7 +60,7 @@ class _CMPSTabState extends State<CMPSTab> {
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
                             child: Cover2(
-                                text: " Safa, Haidar H.",
+                                text: "Chairperson: Safa, Haidar H.",
                                 image: "assets/haidar.jpg"),
                             width: MediaQuery.of(context).size.width * 0.25,
                             alignment: Alignment.center,
@@ -101,37 +101,7 @@ class _CMPSTabState extends State<CMPSTab> {
           coverListView(context, 'cmpsnews'),
           SizedBox(
             height: 1,
-          ),
-          Row(
-            children: <Widget>[
-              Container(
-                color: Color.fromARGB(255, 35, 40, 50),
-                height: MediaQuery.of(context).size.height / 2,
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: NiceButton(
-                          radius: 10,
-                          padding: const EdgeInsets.all(15),
-                          text: "Open Catalogue",
-                          fontSize: 14,
-                          elevation: 20,
-                          gradientColors: [secondColor, firstColor],
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PDFViewer(
-                                        "https://www.aub.edu.lb/registrar/Documents/catalogue/undergraduate19-20/computerscience.pdf")));
-                          },
-                        )),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          )
         ])),
       ),
     );

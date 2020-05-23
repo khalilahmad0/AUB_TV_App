@@ -10,10 +10,6 @@ import 'package:http/http.dart' as http;
 import 'Faculties/FAS.dart';
 import 'dart:async';
 
-Future sleep1() {
-  return new Future.delayed(const Duration(seconds: 7), () => "1");
-}
-
 class PDFViewer extends StatefulWidget {
   String URL = "";
 
@@ -56,7 +52,6 @@ class _PDFViewerState extends State<PDFViewer>
       // remove html tags from the text
       var parsedContent = parse(parsed['content'] as String);
       String parsedString = parse(parsedContent.body.text).documentElement.text;
-
       // get the PDF
       var newData = await http.get(parsedString);
       var bytes = newData.bodyBytes;
@@ -87,10 +82,11 @@ class _PDFViewerState extends State<PDFViewer>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RaisedButton(
+                      focusColor: Colors.amber.shade100,
                       color: Colors.amber,
                       child: Text("Open PDF"),
                       onPressed: () {
-                        Timer(Duration(seconds: 2), () {
+                        Timer(Duration(seconds: 3), () {
                           if (urlPDFPath != null) {
                             Navigator.push(
                                 context,

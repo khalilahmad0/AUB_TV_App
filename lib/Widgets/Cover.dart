@@ -150,7 +150,7 @@ Widget coverListView(BuildContext context, String endpoint) {
       switch (endpoint) {
         case ("news"):
           return Provider.of<DataService>(context).getNews(6);
-        case("cmpsnews"):
+        case ("cmpsnews"):
           return Provider.of<DataService>(context).getCMPSNews(6);
         case ("video"):
           return Provider.of<DataService>(context).getVideos(6);
