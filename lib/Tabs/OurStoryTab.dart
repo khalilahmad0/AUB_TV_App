@@ -72,7 +72,7 @@ class _OurStoryTabState extends State<OurStoryTab> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width / 1.5,
             child: Text(
-                " The  AUB TV app is a group project that was completed in the CMPS 253 course , given by Dr. Mahmoud Bdeir. The team is made of 4 members majoring in computer science in AUB; Khalil Al Ahmad, George Yeranjian, Mounir El Tannir and Marwa Karaki. We all met in a computer lab for a computer science course where we became good friends. The team directly clicked and it was obvious that if we all put in the effort, it would be easy to achieve great things since the communication was already there.  Enjoy the application!",
+                " The  AUB TV app is a group project that was completed in the CMPS 253 course, given by Dr. Mahmoud Bdeir. The team is made of 4 members majoring in computer science at AUB: Khalil Al Ahmad, George Yeranjian, Mounir El Tannir and Marwa Karaki. We all met in a computer lab for a computer science course where we became good friends. The team directly clicked and it was obvious that if we all put in the effort, it would be easy to achieve great things since the communication was already there.  Enjoy the application!",
                 style: TextStyle(color: Colors.white70, fontSize: 16),
                 textAlign: TextAlign.center),
           ),
