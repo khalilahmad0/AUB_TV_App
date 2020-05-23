@@ -1,4 +1,4 @@
-# tv_test_app
+# aub_tv_app
 
 A new Flutter application.
 
